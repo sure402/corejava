@@ -1,0 +1,89 @@
+package Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+
+
+
+ class Sorted {
+	
+	public static void main(String[] args)  {
+		Map<Integer, String> map = new HashMap<Integer, String>();
+//		List<String> li1 = new ArrayList<String>();
+//		List<String> li2 = new ArrayList<String>();
+		map.put(4, "naveen");
+		map.put(1, "suresh");
+		map.put(3, "harish");
+		map.put(2, "ramesh");
+		map.put(5, "ravi");
+	
+		
+		 System.out.println("Unsort Map......");
+		 Integer in = new Integer(4);
+		 map.remove(in);
+	        printMap(map);
+/*
+	        System.out.println("\nSorted Map......By Value");
+	        Map<Integer, String> sortedMap = sortByValue(map);
+	        System.out.println("@@@"+ sortedMap);
+	        printMap(sortedMap);
+*/		
+		
+		
+	}
+	
+	private static Map<Integer, String> sortByValue(Map<Integer, String> unsortMap) {
+
+        // 1. Convert Map to List of Map
+        List<Map.Entry<Integer, String>> list =
+                new ArrayList<Map.Entry<Integer, String>>(unsortMap.entrySet());
+
+        // 2. Sort list with Collections.sort(), provide a custom Comparator
+        //    Try switch the o1 o2 position for a different order
+        Collections.sort(list, new Comparator<Map.Entry<Integer, String>>() {
+            public int compare(Map.Entry<Integer, String> o1,
+                               Map.Entry<Integer, String> o2) {
+            	System.out.println("o1"+ o1.getValue()+ "@@"+o2.getValue());
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        // 3. Loop the sorted list and put it into a new insertion order Map LinkedHashMap
+        Map<Integer, String> sortedMap1 = new LinkedHashMap<Integer, String>();
+        for (Map.Entry<Integer, String> entry : list) {
+            sortedMap1.put(entry.getKey(), entry.getValue());
+        }
+
+        /*
+        //classic iterator example
+        for (Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext(); ) {
+            Map.Entry<String, Integer> entry = it.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }*/
+
+
+        return sortedMap1;
+    }
+
+
+	 public static  void printMap(Map<Integer, String> map) {
+	        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+//	            System.out.println("Key : " + entry.getKey()
+//	                    + " Value : " + entry.getValue());
+	            System.out.println(
+	                     " Value : " + entry.getValue());
+	        }
+	    }
+	
+	
+	
+}

@@ -1,0 +1,36 @@
+package Test;
+
+	
+	 class Demo {
+			
+			public String abc(String name){
+				System.out.println("child class calling");
+				return name;
+			
+			}
+			
+		}
+
+		class SubDemo extends Demo{ 
+
+			public String abc(String name){
+				System.out.println("subchild class calling");
+				return name;
+			
+				
+			}
+				
+			
+		}
+
+		 class Polymorphism { 
+			public static void main(String args[]){
+				Demo demo = new SubDemo();
+				System.out.println("@@@"+ demo.abc("suresh"));
+//				System.out.println("@@@"+ demo.abc("Naveen"));
+				
+				
+			
+
+		}
+}

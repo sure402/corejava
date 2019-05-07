@@ -1,0 +1,16 @@
+127.0.0.1 - - [19/Oct/2018:19:05:09 -0700] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:05:10 -0700] "GET /StuartBank/sblogin.jsp HTTP/1.1" 200 321
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:05:18 -0700] "GET /StuartBank/login?name=43966705&password=123456789 HTTP/1.1" 200 395
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:05:22 -0700] "GET /StuartBank/Customerregistration HTTP/1.1" 200 673
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:06:02 -0700] "GET /StuartBank/Customerinfo?FisrtName=tulu&LastName=thitli&age=28&DateOfBirth=01-01-1990&City=Vskp&State=Ap&Country=India&ZIPCode=53000 HTTP/1.1" 200 420
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:06:06 -0700] "GET /StuartBank/bankaccountInfo HTTP/1.1" 200 680
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:06:16 -0700] "GET /StuartBank/customerbankInfo?bankcode=SB001&balance=30&AccountType=credit HTTP/1.1" 200 435
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:06:18 -0700] "GET /StuartBank/bankInfo HTTP/1.1" 200 286
+127.0.0.1 - - [19/Oct/2018:19:21:41 -0700] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:21:42 -0700] "GET /StuartBank/sblogin.jsp HTTP/1.1" 200 321
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:21:49 -0700] "GET /StuartBank/login?name=43966705&password=123456789 HTTP/1.1" 200 395
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:21:52 -0700] "GET /StuartBank/Customerregistration HTTP/1.1" 200 673
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:22:29 -0700] "GET /StuartBank/Customerinfo?FisrtName=Thitlli&LastName=Toofan&age=28&DateOfBirth=10-10-1990&City=Sklm&State=Ap&Country=India&ZIPCode=532000 HTTP/1.1" 200 420
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:22:30 -0700] "GET /StuartBank/bankaccountInfo HTTP/1.1" 200 680
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:22:37 -0700] "GET /StuartBank/customerbankInfo?bankcode=SB001&balance=50&AccountType=credit HTTP/1.1" 200 435
+0:0:0:0:0:0:0:1 - - [19/Oct/2018:19:22:39 -0700] "GET /StuartBank/bankInfo HTTP/1.1" 200 365

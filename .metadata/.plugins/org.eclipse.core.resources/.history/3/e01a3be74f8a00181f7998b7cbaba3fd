@@ -1,0 +1,9 @@
+package com.db;
+
+public class DummyData {
+
+	int id ;
+	String name ;
+	int age ;
+	String course ;
+}

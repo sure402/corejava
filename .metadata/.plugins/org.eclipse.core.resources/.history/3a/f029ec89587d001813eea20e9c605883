@@ -1,0 +1,61 @@
+package Test;
+
+import java.util.HashMap;
+
+
+
+public class StringDemo {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name = "sureshnaveenharishramesh";
+		
+		
+		name.concat("extra");
+		System.out.println("@@@"+name);
+		String s = new String("suresh");
+		System.out.println(s.hashCode());
+		s =  "firneds";
+	
+
+	if(s.equals("firneds")){
+		System.out.println(s.hashCode());
+	}else{
+		System.out.println(s.hashCode());
+	}
+		System.out.println("name"+ s);
+		String name1 = name.substring(0, 6);
+		String uppercase = name1.toUpperCase();
+		System.out.println("uppercase" + uppercase);
+		String name2 = name.substring(7, 12);
+		String name3 = name.substring(13, 18);
+		String name4 = name.substring(12);
+		System.out.println("name1"+ name4);
+
+		for(int i = 0; i<name.length(); i++){
+			
+			char s1 = name.charAt(i);
+			int count = 0;
+			for(int j = 0; j<name.length(); j++){
+				char s2 = name.charAt(j);
+				
+			if(s1 == s2 ){
+				count++;
+			
+			}
+			
+		}
+			System.out.println(s1+ " count of each letter " + count);
+		
+		}
+	  
+     //split the string at character n and at i
+		
+		String temp = " The JAVA TEST";
+		char c = temp.charAt(temp.length()-4);
+		temp = temp.substring(6,8);
+		temp = temp + c;
+		System.out.println(temp);
+	}
+}

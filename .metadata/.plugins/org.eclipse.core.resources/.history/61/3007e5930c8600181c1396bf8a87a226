@@ -1,0 +1,157 @@
+package com.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class JDBCExample1 {
+
+	 public static String quote(String s) {
+		    return new StringBuilder()
+		    .append('\'')
+		        .append(s)
+		        .append('\'')
+		        .toString();
+		}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//driver/connection/drivermanger/statement/resultset/prestatement/
+	
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		 PreparedStatement pstmt= null;
+		
+try{
+	Class.forName("com.mysql.jdbc.Driver"); //creates new instance for the driver
+	//gets connected to mysql database using, url, username, password of the installed mysql 
+	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+
+	
+	
+	 st = con.createStatement();
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter case no: ");
+	int expression = sc.nextInt();
+	   			int id ;
+				String name ;
+				int age ;
+				String course ;
+	switch(expression)
+	{
+	   // case statements
+	   // values must be of same type of expression
+	   case 1 :
+		   
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			
+			}
+	      // Statements
+	      break; // break is optional
+	      
+	   case 2 :
+		   id = sc.nextInt();
+		   name = sc.next();
+		   age = sc.nextInt();
+		   course = sc.next();
+		   pstmt=con.prepareStatement("insert into test.student values(?,?,?,?)");  
+		   pstmt.setInt(1,id);//1 specifies the first parameter in the query  
+		   pstmt.setString(2,name);  
+		   pstmt.setInt(3,age); 
+		   pstmt.setString(4,course); 
+		   int i=pstmt.executeUpdate(); 
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			
+			}
+	      // Statements
+	      break; // break is optional
+	      
+	   case 3 :
+		   String id1 = sc.next();
+		   name = sc.next().toString();
+//		   age = sc.nextInt();
+//		   course = sc.next();
+			    String x = name;
+			    String quotedX = quote(x);
+			    System.out.println(quotedX);
+			
+		   
+		   st = con.createStatement();
+ 
+           String query = "update test.student set name="+quotedX+" where id = "+id1;
+           System.out.println("query"+ query);
+           //count will give you how many records got updated
+           st.executeUpdate(query);
+           System.out.println("Updated queries: "); 
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			
+			}
+	      // Statements
+	      break; 
+	      
+	   case 4 :
+//		   id = sc.nextInt();
+//		   name = sc.next();
+//		   age = sc.nextInt();
+//		   course = sc.next();
+		   st = con.createStatement();
+		   String query1 = "ALTER TABLE student ADD DateOfBirth date";  
+
+//		   int i=pstmt.executeUpdate(); 
+		   st.executeUpdate(query1);
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4)+" "+rs.getDate(5));
+			
+			}
+	      // Statements
+	      break; // break is optional
+	      
+	}
+//	PreparedStatement stmt=con.prepareStatement("insert into test.student values(?,?,?,?,?)");  
+//	PreparedStatement update=con.prepareStatement("update student set SPECIALIZATION=? where age=?"); 
+//	String myColumnType = "varchar(40)";
+//	String myColumnName = "SPECIALIZATION";
+
+//	st.executeUpdate("ALTER TABLE test.student ADD " + myColumnName + " " + myColumnType + "NOT NULL");
+//	String updateTableSQL = ("UPDATE test.student SET student." + myColumnName + " = ? WHERE student.id = 1" );
+//	PreparedStatement addcolum= con.prepareStatement(updateTableSQL);
+//	ResultSet rs = st.executeQuery("select * from test.student");
+
+	 
+//	update.setString(1,"ECE");//1 specifies the first parameter in the query i.e. name  
+//	update.setInt(2,50);  
+	
+//	int i=addcolum.executeUpdate();  
+
+//		stmt.setInt(1,2);//1 specifies the first parameter in the query  
+//		stmt.setString(2,"Naveen");  
+//		stmt.setString(3,"50"); 
+//		stmt.setString(4,"Bachelors"); 
+
+//	System.out.println(i+" records inserted");
+
+}catch(Exception e){
+	e.printStackTrace();
+}
+finally{
+	try {
+		con.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+	}
+
+}

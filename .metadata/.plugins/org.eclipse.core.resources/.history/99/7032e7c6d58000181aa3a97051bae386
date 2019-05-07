@@ -1,0 +1,23 @@
+package com.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCExample1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//driver/connection/drivermanger/statement/resultset/prestatement/
+	
+		
+try{
+	Class.forName("com.mysql.jdbc.Driver"); //creates new instance for the driver
+	//gets connected to mysql database using, url, username, password of the installed mysql 
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+	
+}catch(Exception e){
+	
+}
+	}
+
+}

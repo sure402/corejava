@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>GuruWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>env</param-name>
+    <param-value>dev</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>SureshServlet</servlet-name>
+    <servlet-class>com.guru.ServletFirtsPgm</servlet-class>
+    <init-param>
+      <param-name>dbdrivername</param-name>
+      <param-value>com.mysql.jdbc</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SureshServlet</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginSuccess</servlet-name>
+    <servlet-class>com.guru.HomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginSuccess</servlet-name>
+    <url-pattern>/homeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>customer</servlet-name>
+    <servlet-class>com.guru.CustomerInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>customer</servlet-name>
+    <url-pattern>/CustomerInfo</url-pattern>
+  </servlet-mapping>
+</web-app>

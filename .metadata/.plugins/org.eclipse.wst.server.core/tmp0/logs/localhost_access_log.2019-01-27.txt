@@ -1,0 +1,6 @@
+127.0.0.1 - - [27/Jan/2019:09:08:02 -0800] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [27/Jan/2019:09:08:03 -0800] "GET /StuartBank/sblogin.jsp HTTP/1.1" 200 321
+0:0:0:0:0:0:0:1 - - [27/Jan/2019:09:45:52 -0800] "GET /StuartBank/sblogin.jsp HTTP/1.1" 200 321
+0:0:0:0:0:0:0:1 - - [27/Jan/2019:09:46:04 -0800] "GET /StuartBank/login?name=root&password=root HTTP/1.1" 500 1782
+0:0:0:0:0:0:0:1 - - [27/Jan/2019:09:52:30 -0800] "GET /StuartBank/login?name=43966705&password=123456789 HTTP/1.1" 200 395
+0:0:0:0:0:0:0:1 - - [27/Jan/2019:09:52:34 -0800] "GET /StuartBank/Customerregistration HTTP/1.1" 200 673

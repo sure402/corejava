@@ -1,0 +1,192 @@
+package com.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class JDBCExample1 {
+
+	 public static String quote(String s) {
+		    return new StringBuilder()
+		    .append('\'')
+		        .append(s)
+		        .append('\'')
+		        .toString();
+		}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//driver/connection/drivermanger/statement/resultset/prestatement/
+	
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		 PreparedStatement pstmt= null;
+		 String quotedX = null;
+		
+try{
+	Class.forName("com.mysql.jdbc.Driver"); //creates new instance for the driver
+	//gets connected to mysql database using, url, username, password of the installed mysql 
+	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+
+ con.setAutoCommit(true);
+	
+	
+	 st = con.createStatement();
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter case no: ");
+	int expression = sc.nextInt();
+	int j = 0;
+	   			int id ;
+				String name ;
+				int age ;
+				String course ;
+	switch(expression)
+	{
+	   // case statements
+	   // values must be of same type of expression
+	   case 1 :
+		   
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			
+			}
+	      // Statements
+	      break; // break is optional
+	      
+	   case 2 :
+		  
+		  DummyData dd = new DummyData();
+		   List<DummyData> list = new ArrayList<DummyData>();
+		   dd.setId(6);
+		   dd.setName("ABC");
+		   dd.setAge(19);
+		   dd.setCourse("IT");
+		   list.add(dd);
+		   dd = new DummyData();
+		   dd.setId(13);
+		   dd.setName("xyz");
+		   dd.setAge(20);
+		   dd.setCourse("ECE");
+		   list.add(dd);
+		   
+	//crate A a class with setter and getter for age,name,course, id
+		   
+		   pstmt=con.prepareStatement("insert into test.student values(?,?,?,?)");  
+		   for(DummyData s : list){
+			   pstmt.setInt(1, s.getId());
+			   pstmt.setString(2,s.getName());  
+			   pstmt.setInt(3,s.getAge()); 
+			   pstmt.setString(4,s.getCourse());
+			   j=pstmt.executeUpdate(); 
+			   j++;
+		   }
+		   
+		   if(j>0){
+			   System.out.println("no of records inserted="+ j);
+			  con.commit();
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			}
+			}else{
+				System.out.println("Insertion failed");
+			
+			}
+		   
+	      // Statements
+	      break; // break is optional
+	      
+	   case 3 :
+		   String id1 = sc.next();
+		   name = sc.next().toString();
+//		   age = sc.nextInt();
+//		   course = sc.next();
+			    String x = name;
+			     quotedX = quote(x);
+			    System.out.println(quotedX);
+			
+		   
+		   st = con.createStatement();
+ 
+           String query = "update test.student set name="+quotedX+" where id = "+id1;
+           System.out.println("query"+ query);
+           //count will give you how many records got updated
+           j= st.executeUpdate(query);
+           System.out.println("Updated queries: "); 
+			rs= st.executeQuery("select * from test.student");
+			while(rs.next()){
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4));
+			
+			}
+	      // Statements
+	      break; 
+	      
+	   case 4 :
+//		   id = sc.nextInt();
+		   name = sc.next();
+//		    quotedX = quote(name);
+//		   age = sc.nextInt();
+		   String log = sc.next();
+//		  String log1 =quote(log);
+		   st = con.createStatement();
+		   String query1=   "ALTER TABLE test.student ADD COLUMN "+name+" SMALLINT(6)"+" NOT NULL AFTER `name`, ADD COLUMN "+log+ " VARCHAR(12) NOT NULL AFTER `course`";
+		   	System.out.println("query1"+query1);
+		   st.executeUpdate(query1);
+			rs= st.executeQuery("select * from test.student");
+//			while(rs.next()){
+//				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4)+" "+rs.getDate(5));
+//			
+//			}
+	      // Statements
+	      break; // break is optional
+	      
+	   case 5 :
+//		   id = sc.nextInt();
+		   name = sc.next();
+//		    quotedX = quote(name);
+//		   age = sc.nextInt();
+		   String log1 = sc.next();
+//		  String log1 =quote(log);
+		   st = con.createStatement();
+		   String delQuery= "ALTER TABLE test.student DROP COLUMN "+ name+" , DROP COLUMN "+log1;
+		   	System.out.println("query1"+delQuery);
+		   st.executeUpdate(delQuery);
+			rs= st.executeQuery("select * from test.student");
+//			while(rs.next()){
+//				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+" "+rs.getString(4)+" "+rs.getDate(5));
+//			
+//			}
+	      // Statements
+	      break; // break is optional
+	      
+	}
+
+// connection pooling - 
+}
+catch(Exception e){
+	e.printStackTrace();
+	try {
+		con.rollback();
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+}
+finally{
+	try {
+		con.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+	}
+//create a new table with studentaddress as table name, columns names as , id -> foreign key to table student id , city,state, country,pin code
+}

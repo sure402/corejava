@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Bank Info</title>
+</head>
+<body>
+<h1>Bank Info</h1>
+<%String name=(String) session.getAttribute("name");
+out.println("Welcome "+name); %>
+<%String bancode=(String) session.getAttribute("bankCode");
+out.println("Welcome "+name); %>
+<form action="bankvaultInfo" method="get">
+Bank Name : <input type="text" name="bankname"/><br/>
+Bank Code : <input type="text" name="bankcode"/><br/>
+Bank Balance: <input type="text" name="bankbalance"/> <br/>
+Number Of Accounts : <input type="text" name="noaccounts"/><br/>
+Number Of Customers: <input type="text" name="nocustomers"/> <br/>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
