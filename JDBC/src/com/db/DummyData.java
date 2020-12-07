@@ -6,6 +6,7 @@ public class DummyData {
 	private String name ;
 	private int age ;
 	private String course ;
+	private int phoneNumber;
 	
 	
 	public int getId() {
