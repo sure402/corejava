@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-
+//Learning from suresh dada
 //write a program to sum agiven eg 123456: 12345 = 15
 // write a progr to remove duplicate strings eg: asgadhgdfhdfhdfhsfagrhsfasgershsdgdsfh;
 // Write a prog , l1=["A","B","c","D","E","F","G"],l2=[0,3,6]
